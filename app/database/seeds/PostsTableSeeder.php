@@ -12,7 +12,9 @@ class PostsTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Post::create([
-
+                'title' => $faker->sentence($nbWords = 6),
+                'body'  => $faker->text($maxNbChars = 1200),
+                'user_id' => 1
 			]);
 		}
 	}

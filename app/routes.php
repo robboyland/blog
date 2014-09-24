@@ -10,9 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('login', 'SessionsController@create');
+Route::get('logout', 'SessionsController@destroy');
+Route::resource('sessions', 'SessionsController');
+
 Route::resource('posts', 'PostsController');
 
 Route::get('/', function()
 {
 	return View::make('hello');
 });
+

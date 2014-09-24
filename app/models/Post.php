@@ -2,6 +2,11 @@
 
 class Post extends \Eloquent {
 
+    public function category()
+    {
+        return $this->belongsTo('Category');
+    }
+
 	// Add your validation rules here
 	public static $rules = [
 		// 'title' => 'required'

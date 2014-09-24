@@ -15,6 +15,10 @@
                 {{ Form::textarea('body', $post->body, ['class' => 'form-control']) }}
             </div>
 
+            <div class="form-group">
+                {{ Form::label('categories', 'categories') }}
+                {{ Form::select('category_id', $categories , $post->category_id) }}
+            </div>
                 {{ Form::hidden('user_id', $post->user_id) }}
 
             <div class="form-group">

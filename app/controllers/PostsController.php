@@ -72,8 +72,9 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		$post = Post::find($id);
+        $categories = DB::table('categories')->orderBy('name', 'asc')->lists('name','id');
 
-		return View::make('posts.edit', compact('post'));
+		return View::make('posts.edit', compact('post', 'categories'));
 	}
 
 	/**

@@ -12,6 +12,11 @@
                 {{ Form::text('body', null, ['class' => 'form-control']) }}
             </div>
 
+            <div class="form-group">
+                {{ Form::label('categories', 'categories') }}
+                {{ Form::select('category_id', $categories, ['class' => 'form-control']) }}
+            </div>
+
                 {{ Form::hidden('user_id', 1) }}
 
             <div class="form-group">

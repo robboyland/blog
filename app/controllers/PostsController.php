@@ -26,7 +26,9 @@ class PostsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('posts.create');
+        $categories = DB::table('categories')->orderBy('name', 'asc')->lists('name','id');
+
+		return View::make('posts.create', compact('categories'));
 	}
 
 	/**
@@ -36,7 +38,7 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required']);
+		$validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required', 'category_id' => 'required']);
 
 		if ($validator->fails())
 		{

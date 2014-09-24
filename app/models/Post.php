@@ -8,6 +8,6 @@ class Post extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = ['title', 'body', 'user_id'];
+	protected $fillable = ['title', 'body', 'user_id', 'category_id'];
 
 }

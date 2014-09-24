@@ -5,6 +5,6 @@
 
     <h1>Posts</h1>
     @foreach($posts as $post)
-        <div>{{ $post->title }}</div>
+        <div>{{ link_to_route('posts.show', $post->title, [$post->id]) }}</div>
     @endforeach
 @stop

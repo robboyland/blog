@@ -1,1 +1,6 @@
-/Users/robb/sandbox/blog/app/views/posts/show.blade.php
+@extends('layouts.master')
+
+@section('content')
+    <h1>{{ $post->title }}</h1>
+    <div>{{ $post->body }}</div>
+@stop

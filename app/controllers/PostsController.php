@@ -2,6 +2,11 @@
 
 class PostsController extends \BaseController {
 
+    public function __construct()
+    {
+        $this->beforeFilter('auth', ['except' => 'show']);
+    }
+
 	/**
 	 * Display a listing of posts
 	 *

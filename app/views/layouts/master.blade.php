@@ -24,7 +24,13 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <a href="/">home</a>
+                {{ link_to_action('PostsController@index', 'posts') }}
 
+                @if ( ! Auth::check())
+                    {{ link_to_action('SessionsController@create', 'login') }}
+                @else
+                    {{ link_to_action('SessionsController@destroy', 'log out') }}
+                @endif
             </div>
         </div>
         <div class="row">

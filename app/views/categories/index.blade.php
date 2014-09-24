@@ -1,0 +1,1 @@
+/Users/robb/sandbox/blog/app/views/categories/index.blade.php

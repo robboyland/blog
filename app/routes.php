@@ -15,6 +15,7 @@ Route::get('logout', 'SessionsController@destroy');
 Route::resource('sessions', 'SessionsController');
 
 Route::resource('posts', 'PostsController');
+Route::resource('categories', 'CategoriesController');
 
 Route::get('/', function()
 {

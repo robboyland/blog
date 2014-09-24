@@ -79,7 +79,7 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::findOrFail($id);
 
-		$validator = Validator::make($data = Input::all(), Post::$rules);
+		$validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required']);
 
 		if ($validator->fails())
 		{

@@ -23,12 +23,13 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'homestead',
-			'username'  => 'homestead',
-			'password'  => 'secret',
+            'database'  => $_ENV['DB_NAME'],
+            'username'  => $_ENV['DB_USR'],
+            'password'  => $_ENV['DB_PWD'],
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
+            'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
 		),
 
 		'pgsql' => array(

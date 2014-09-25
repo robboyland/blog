@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+
+    @if (Session::has('flash_message'))
+        <div class="alert alert-info">{{ Session::get('flash_message') }}</div>
+    @endif
+
     <div>{{ link_to_route('posts.create', 'Add new post') }}</div>
 
     <h1>Posts</h1>

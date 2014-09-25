@@ -47,7 +47,7 @@ class PostsController extends \BaseController {
 
 		Post::create($data);
 
-		return Redirect::route('posts.index');
+		return Redirect::route('posts.index')->with('flash_message', 'New Post Created');
 	}
 
 	/**
@@ -96,7 +96,7 @@ class PostsController extends \BaseController {
 
 		$post->update($data);
 
-		return Redirect::route('posts.index');
+		return Redirect::route('posts.index')->with('flash_message', 'Post Updated');
 	}
 
 	/**
@@ -109,7 +109,7 @@ class PostsController extends \BaseController {
 	{
 		Post::destroy($id);
 
-		return Redirect::route('posts.index');
+		return Redirect::route('posts.index')->with('flash_message', 'Post Deleted');
 	}
 
 }

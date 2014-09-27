@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<div class="col-md-8 col-md-offset-2">
 
     <h1>Update Post</h1>
 
@@ -25,7 +26,8 @@
                 {{ Form::hidden('user_id', $post->user_id) }}
 
             <div class="form-group">
-                {{ Form::submit('Update Post', ['class' => 'form-control']) }}
+                {{ Form::submit('Update Post', ['class' => 'btn btn-primary']) }}
             </div>
         {{ Form::close() }}
+</div>
 @stop

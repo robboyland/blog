@@ -15,13 +15,6 @@
         <li>{{ link_to_action('PostsController@index', 'posts') }}</li>
       </ul>
 
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-
     <ul class="nav navbar-nav navbar-right">
         @if ( ! Auth::check())
         <li class="navbar-right">{{ link_to_action('SessionsController@create', 'login') }}</li>
@@ -29,6 +22,13 @@
         <li class="navbar-right">{{ link_to_action('SessionsController@destroy', 'log out') }}</li>
     @endif
       </ul>
+
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
   </div>
 </nav>
 

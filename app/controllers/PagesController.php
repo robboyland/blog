@@ -1,6 +1,6 @@
 <?php
 
-class HomeController extends BaseController {
+class PagesController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -15,9 +15,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function home()
 	{
-		return View::make('hello');
+        $posts = Post::all();
+		return View::make('pages.home', compact('posts'));
 	}
 
 }

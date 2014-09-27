@@ -17,8 +17,5 @@ Route::resource('sessions', 'SessionsController');
 Route::resource('posts', 'PostsController');
 Route::resource('categories', 'CategoriesController');
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'PagesController@home');
 

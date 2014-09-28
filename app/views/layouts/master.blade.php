@@ -13,11 +13,8 @@
 
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 
-
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     {{ HTML::style('css/main.css') }}
-
-
 </head>
 <body>
 

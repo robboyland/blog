@@ -18,6 +18,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     protected $fillable = ['name', 'email', 'password'];
 
+    public function posts()
+    {
+        return $this->hasMany('Post');
+    }
+
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *

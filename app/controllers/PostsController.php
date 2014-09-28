@@ -14,8 +14,8 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::all();
-
+		// $posts = Post::all();
+        $posts = Post::where('user_id', '=', Auth::user()->id)->get();
 		return View::make('posts.index', compact('posts'));
 	}
 

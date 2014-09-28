@@ -18,7 +18,8 @@ class PagesController extends BaseController {
 	public function home()
 	{
         $posts = Post::with('user')->get();
-		return View::make('pages.home', compact('posts'));
+        $categories = Category::all();
+		return View::make('pages.home', compact('posts', 'categories'));
 	}
 
 }

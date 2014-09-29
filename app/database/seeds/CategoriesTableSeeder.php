@@ -5,16 +5,18 @@ use Faker\Factory as Faker;
 
 class CategoriesTableSeeder extends Seeder {
 
-	public function run()
-	{
-		$faker = Faker::create();
+    public function run()
+    {
+        $faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			Category::create([
+        Category::truncate();
+
+        foreach(range(1, 10) as $index)
+        {
+            Category::create([
                 'name' => $faker->sentence($nbWords = 2),
-			]);
-		}
-	}
+            ]);
+        }
+    }
 
 }

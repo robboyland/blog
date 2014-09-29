@@ -8,3 +8,9 @@ body { padding-top: 70px; }
     font-weight: normal;
     color: #444;
 }
+
+#post-comments { margin-top: 20px; margin-bottom: 40px;}
+.comment-details { color: #777; padding-bottom: 5px;}
+.comment-count { font-size: 20px; }
+section.comments { padding: 6px 0 4px 8px; margin-bottom: 6px; border-bottom: 1px solid #ccc; }
+section.comments p { font-size: 18px; }

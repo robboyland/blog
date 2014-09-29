@@ -12,12 +12,17 @@ class Post extends \Eloquent {
         return $this->belongsTo('Category');
     }
 
-	// Add your validation rules here
-	public static $rules = [
-		// 'title' => 'required'
-	];
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
 
-	// Don't forget to fill this array
-	protected $fillable = ['title', 'body', 'user_id', 'category_id'];
+    // Add your validation rules here
+    public static $rules = [
+        // 'title' => 'required'
+    ];
+
+    // Don't forget to fill this array
+    protected $fillable = ['title', 'body', 'user_id', 'category_id'];
 
 }

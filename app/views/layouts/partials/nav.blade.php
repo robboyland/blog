@@ -13,11 +13,12 @@
       <ul class="nav navbar-nav">
         <li><a href="/">home</a></li>
         <li>{{ link_to_action('PostsController@index', 'posts') }}</li>
+        <li>{{ link_to_action('UsersController@index', 'members') }}</li>
       </ul>
 
     <ul class="nav navbar-nav navbar-right">
         @if ( ! Auth::check())
-        <li class="navbar-right">{{ link_to_route('users.create', 'register') }}</li>
+        <li class="navbar-right">{{ link_to_action('UsersController@create', 'register') }}</li>
         <li class="navbar-right">{{ link_to_action('SessionsController@create', 'login') }}</li>
     @else
         <li class="dropdown">

@@ -27,12 +27,3 @@ Route::resource('users', 'UsersController');
 
 Route::get('/', 'PagesController@home');
 
-Route::get('createuser', function()
-{
-    $user = User::create([
-                'name' => 'jk',
-                'email' => 'jk@example.com',
-                'password' => Hash::make('pwd')
-            ]);
-    echo 'done';
-});

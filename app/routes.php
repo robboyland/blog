@@ -1,5 +1,8 @@
 <?php
 
+// Event::listen('illuminate.query', function($sql) {
+//     var_dump($sql);
+// });
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,5 +20,16 @@ Route::resource('sessions', 'SessionsController');
 Route::resource('posts', 'PostsController');
 Route::resource('categories', 'CategoriesController');
 
+Route::resource('comments', 'CommentsController');
+
 Route::get('/', 'PagesController@home');
 
+Route::get('createuser', function()
+{
+    $user = User::create([
+                'name' => 'jk',
+                'email' => 'jk@example.com',
+                'password' => Hash::make('pwd')
+            ]);
+    echo 'done';
+});

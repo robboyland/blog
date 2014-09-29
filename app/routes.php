@@ -22,6 +22,9 @@ Route::resource('categories', 'CategoriesController');
 
 Route::resource('comments', 'CommentsController');
 
+Route::get('register', 'UsersController@create');
+Route::resource('users', 'UsersController');
+
 Route::get('/', 'PagesController@home');
 
 Route::get('createuser', function()

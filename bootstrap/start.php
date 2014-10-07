@@ -24,12 +24,10 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
-
-	'local' => array('robs-mbp.home'),
-
-));
-
+$env = $app->detectEnvironment(function()
+{
+    return getenv('APP_ENV') ?: 'local';
+});
 /*
 |--------------------------------------------------------------------------
 | Bind Paths

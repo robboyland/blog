@@ -17,6 +17,7 @@ Route::get('login', 'SessionsController@create');
 Route::get('logout', 'SessionsController@destroy');
 Route::resource('sessions', 'SessionsController');
 
+Route::resource('tags', 'TagsController');
 Route::resource('posts', 'PostsController');
 Route::resource('categories', 'CategoriesController');
 

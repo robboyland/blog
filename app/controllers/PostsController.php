@@ -75,9 +75,21 @@ class PostsController extends \BaseController {
     public function edit($id)
     {
         $post = Post::find($id);
-        $categories = DB::table('categories')->orderBy('name', 'asc')->lists('name','id');
+        $categories = DB::table('categories')
+                        ->orderBy('name', 'asc')
+                        ->lists('name','id');
 
-        return View::make('posts.edit', compact('post', 'categories'));
+        // all tags
+        $tags = Tag::all();
+
+        // tag ids that post has been assigned
+        $tagIds = array();
+        foreach($post->tags as $tag)
+        {
+            $tagIds[] = $tag->id;
+        }
+
+        return View::make('posts.edit', compact('post', 'categories', 'tags', 'tagIds'));
     }
 
     /**
@@ -97,7 +109,12 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        $post->update($data);
+        $post = Post::find($id);
+        $post->title        = Input::get('title');
+        $post->body         = Input::get('body');
+        $post->category_id  = Input::get('category_id');
+        $post->save();
+        $post->tags()->sync(Input::get('tags'));
 
         return Redirect::route('posts.index')->with('flash_message', 'Post Updated');
     }

@@ -23,6 +23,16 @@
                 {{ Form::select('category_id', $categories , $post->category_id) }}
                 {{ $errors->first('categories_id') }}
             </div>
+
+            <div class="form-group">
+                @foreach ($tags as $tag)
+                    <div class="checkbox">
+                    {{ Form::checkbox('tags[]', $tag->id, in_array($tag->id, $tagIds), ['class' => 'is_it_needed']) }}
+                    {{ Form::label($tag->id, $tag->name) }}
+                    </div>
+                @endforeach
+            </div>
+
                 {{ Form::hidden('user_id', $post->user_id) }}
 
             <div class="form-group">

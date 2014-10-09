@@ -24,7 +24,17 @@
                 {{ $errors->first('categories') }}
             </div>
 
-                {{ Form::hidden('user_id', 1) }}
+            <div class="form-group">
+                <h2>tags</h2>
+
+                @foreach ($tags as $tag)
+                    <div><label>
+                    <input type="checkbox" name="tags[]" id="{{ $tag->id }}" value="{{ $tag->id }}">
+                    {{ $tag->name }}</label></div>
+                @endforeach
+            </div>
+
+                {{ Form::hidden('user_id', Auth::user()->id) }}
 
             <div class="form-group">
                 {{ Form::submit('Create Post', ['class' => 'btn btn-primary']) }}

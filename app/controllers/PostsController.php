@@ -27,8 +27,8 @@ class PostsController extends \BaseController {
     public function create()
     {
         $categories = DB::table('categories')->orderBy('name', 'asc')->lists('name','id');
-
-        return View::make('posts.create', compact('categories'));
+        $tags = Tag::all();
+        return View::make('posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -45,7 +45,8 @@ class PostsController extends \BaseController {
             return Redirect::back()->withErrors($validator)->withInput();
         }
 
-        Post::create($data);
+        $post = Post::create($data);
+        $post->tags()->sync(Input::get('tags'));
 
         return Redirect::route('posts.index')->with('flash_message', 'New Post Created');
     }

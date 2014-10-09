@@ -17,7 +17,7 @@
             @endforeach
             <h2>tags</h2>
             @foreach($tags as $tag)
-                <div>{{ link_to('/tags/' . $tag->id . '/posts', $tag->name) }}</div>
+                <div>{{ link_to('/tag/' . $tag->id . '/posts', $tag->name) }}</div>
             @endforeach
         </div>
     </div>

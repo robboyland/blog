@@ -132,4 +132,12 @@ class PostsController extends \BaseController {
         return Redirect::route('posts.index')->with('flash_message', 'Post Deleted');
     }
 
+    public function byTag($tag)
+    {
+        $posts = Tag::find($tag)->posts;
+        $categories = Category::all();
+        $tags = Tag::all();
+        return View::make('tags.posts', compact('posts', 'categories', 'tags'));
+    }
+
 }

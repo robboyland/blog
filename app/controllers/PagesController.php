@@ -19,7 +19,8 @@ class PagesController extends BaseController {
 	{
         $posts = Post::with('user')->get();
         $categories = Category::all();
-		return View::make('pages.home', compact('posts', 'categories'));
+        $tags = Tag::all();
+		return View::make('pages.home', compact('posts', 'categories', 'tags'));
 	}
 
 }

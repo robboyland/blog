@@ -27,6 +27,7 @@ Route::get('register', 'UsersController@create');
 Route::get('members', 'UsersController@index');
 Route::resource('users', 'UsersController');
 
+Route::get('/category/{category}/posts', 'PostsController@byCategory');
 Route::get('/tag/{tag}/posts', 'PostsController@byTag');
 
 Route::get('/', 'PagesController@home');

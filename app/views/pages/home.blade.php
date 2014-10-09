@@ -13,7 +13,7 @@
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <h2>categories</h2>
             @foreach($categories as $category)
-                <div>{{ link_to('/categories/' . $category->id . '/posts', $category->name) }}</div>
+                <div>{{ link_to('/category/' . $category->id . '/posts', $category->name) }}</div>
             @endforeach
             <h2>tags</h2>
             @foreach($tags as $tag)

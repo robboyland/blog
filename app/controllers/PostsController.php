@@ -137,7 +137,7 @@ class PostsController extends \BaseController {
         $posts = Tag::find($tag)->posts;
         $categories = Category::all();
         $tags = Tag::all();
-        return View::make('tags.posts', compact('posts', 'categories', 'tags'));
+        return View::make('tags.posts', compact('posts', 'categories', 'tags', 'tag'));
     }
 
     public function byCategory($category)
@@ -145,7 +145,7 @@ class PostsController extends \BaseController {
         $posts = Category::find($category)->posts;
         $categories = Category::all();
         $tags = Tag::all();
-        return View::make('categories.posts', compact('posts', 'categories', 'tags'));
+        return View::make('categories.posts', compact('posts', 'categories', 'tags', 'category'));
     }
 
 }

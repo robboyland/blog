@@ -13,6 +13,12 @@
             </div>
 
             <div class="form-group">
+                {{ Form::label('slug', 'slug') }}
+                {{ Form::text('slug', null, ['class' => 'form-control']) }}
+                {{ $errors->first('slug') }}
+            </div>
+
+            <div class="form-group">
                 {{ Form::label('body', 'body') }}
                 {{ Form::textarea('body', null, ['class' => 'form-control']) }}
                 {{ $errors->first('body') }}

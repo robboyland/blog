@@ -30,6 +30,6 @@ Route::resource('users', 'UsersController');
 Route::get('/category/{category}/posts', 'PostsController@byCategory');
 Route::get('/tag/{tag}/posts', 'PostsController@byTag');
 
-Route::get('/{id}', 'PostsController@show');
+Route::get('/{slug}', 'PostsController@show');
 Route::get('/', 'PagesController@home');
 

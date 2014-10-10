@@ -57,9 +57,9 @@ class PostsController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where('slug', '=', $slug)->firstOrFail();;
 
         $comments = Comment::with('user')->where('post_id', '=', $post->id)->get();
 

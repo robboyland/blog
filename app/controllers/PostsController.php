@@ -38,7 +38,7 @@ class PostsController extends \BaseController {
      */
     public function store()
     {
-        $validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required', 'category_id' => 'required']);
+        $validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required', 'category_id' => 'required', 'slug' => 'required']);
 
         if ($validator->fails())
         {

@@ -12,6 +12,11 @@ class Post extends \Eloquent {
         return $this->belongsTo('Category');
     }
 
+    public function series()
+    {
+        return $this->belongsTo('Series');
+    }
+
     public function tags() {
         return $this->belongsToMany('Tag');
     }

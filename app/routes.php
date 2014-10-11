@@ -20,7 +20,7 @@ Route::resource('sessions', 'SessionsController');
 Route::resource('tags', 'TagsController');
 Route::resource('posts', 'PostsController');
 Route::resource('categories', 'CategoriesController');
-
+Route::resource('series', 'SeriesController');
 Route::resource('comments', 'CommentsController');
 
 Route::get('register', 'UsersController@create');

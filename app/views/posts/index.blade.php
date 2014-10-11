@@ -6,7 +6,13 @@
         <div class="alert alert-info">{{ Session::get('flash_message') }}</div>
     @endif
 
-    <div>{{ link_to_route('posts.create', 'Add new post') }}</div>
+    <div>{{ link_to_route('series.create', 'Create new series') }}</div>
+    <div>{{ link_to_route('posts.create', 'Create new post') }}</div>
+
+    <h1>Series</h1>
+    @foreach($series as $series)
+        <div>{{ link_to_route('series.index', $series->title, [$series->id]) }}</div>
+    @endforeach
 
     <h1>Posts</h1>
     @foreach($posts as $post)

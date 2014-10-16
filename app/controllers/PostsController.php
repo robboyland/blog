@@ -136,7 +136,6 @@ class PostsController extends \BaseController {
     {
         $tagpage = Tag::find($tag);
         $posts = Tag::find($tag)->posts;
-
         return View::make('tags.posts', compact('posts', 'categories', 'tags', 'tag', 'tagpage'));
     }
 

@@ -9,7 +9,7 @@ class TagsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+        //
 	}
 
 

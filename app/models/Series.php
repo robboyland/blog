@@ -8,4 +8,9 @@ class Series extends Eloquent {
     {
         return $this->belongsTo('User');
     }
+
+    public function post()
+    {
+        return $this->hasMany('Post');
+    }
 }

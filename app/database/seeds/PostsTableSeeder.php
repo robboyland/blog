@@ -11,8 +11,9 @@ class PostsTableSeeder extends Seeder {
 
         Post::truncate();
 
-        $user_ids = DB::table('users')->lists('id');
-        $cat_ids  = DB::table('categories')->lists('id');
+        $user_ids    = DB::table('users')->lists('id');
+        $cat_ids     = DB::table('categories')->lists('id');
+        $series_ids  = DB::table('series')->lists('id');
 
         // function dashes($string) {
         //     //Lower case everything
@@ -32,11 +33,12 @@ class PostsTableSeeder extends Seeder {
             $slug  = str_replace(' ', '-', $title);
 
             Post::create([
-                'title' => $title,
-                'slug'  => $slug,
-                'body'  => $faker->text(1200),
-                'user_id' => $faker->randomElement($user_ids),
-                'category_id' => $faker->randomElement($cat_ids)
+                'title'       => $title,
+                'slug'        => $slug,
+                'body'        => $faker->text(1200),
+                'user_id'     => $faker->randomElement($user_ids),
+                'category_id' => $faker->randomElement($cat_ids),
+                'series_id'   => $faker->randomElement($series_ids)
             ]);
         }
     }

@@ -9,6 +9,8 @@ class SeriesTableSeeder extends Seeder {
 	{
 		$faker = Faker::create();
 
+        Series::truncate();
+
         $user_ids = DB::table('users')->lists('id');
 
 		foreach(range(1, 20) as $index)

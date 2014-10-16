@@ -9,7 +9,9 @@ class SeriesController extends \BaseController {
 	 */
 	public function index()
 	{
-        //
+        $series = Series::all();
+
+        return View::make('series.index', compact('series'));
 	}
 
 
@@ -53,7 +55,10 @@ class SeriesController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$series = Series::find($id);
+        $posts = Post::where('series_id', '=', $id);
+
+        return View::make('series.show', compact('series', 'posts'));
 	}
 
 

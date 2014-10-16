@@ -4,7 +4,7 @@ class PostsController extends \BaseController {
 
     public function __construct()
     {
-        $this->beforeFilter('auth', ['except' => 'show']);
+        $this->beforeFilter('auth', ['except' => ['show', 'byTag', 'byCategory']]);
     }
 
     /**
@@ -134,18 +134,18 @@ class PostsController extends \BaseController {
 
     public function byTag($tag)
     {
+        $tagpage = Tag::find($tag);
         $posts = Tag::find($tag)->posts;
-        $categories = Category::all();
-        $tags = Tag::all();
-        return View::make('tags.posts', compact('posts', 'categories', 'tags', 'tag'));
+
+        return View::make('tags.posts', compact('posts', 'categories', 'tags', 'tag', 'tagpage'));
     }
 
     public function byCategory($category)
     {
+        $catpage = Category::find($category);
         $posts = Category::find($category)->posts;
-        $categories = Category::all();
-        $tags = Tag::all();
-        return View::make('categories.posts', compact('posts', 'categories', 'tags', 'category'));
+
+        return View::make('categories.posts', compact('posts', 'categories', 'tags', 'category', 'catpage'));
     }
 
 }

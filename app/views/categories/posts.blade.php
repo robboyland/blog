@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>{{ $category }}</h1>
+    <h1>{{ $catpage->name }}</h1>
     @foreach($posts as $post)
         <div>
             <a href="/{{$post->slug}}">{{$post->title}}</a>

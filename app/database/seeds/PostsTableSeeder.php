@@ -14,6 +14,7 @@ class PostsTableSeeder extends Seeder {
         $user_ids    = DB::table('users')->lists('id');
         $cat_ids     = DB::table('categories')->lists('id');
         $series_ids  = DB::table('series')->lists('id');
+        $tag_ids     = DB::table('tags')->lists('id');
 
         // function dashes($string) {
         //     //Lower case everything
@@ -38,7 +39,8 @@ class PostsTableSeeder extends Seeder {
                 'body'        => $faker->text(1200),
                 'user_id'     => $faker->randomElement($user_ids),
                 'category_id' => $faker->randomElement($cat_ids),
-                'series_id'   => $faker->randomElement($series_ids)
+                'series_id'   => $faker->randomElement($series_ids),
+                'tag_id'      => $faker->randomElement($tag_ids)
             ]);
         }
     }

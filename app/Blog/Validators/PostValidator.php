@@ -6,7 +6,7 @@ class PostValidator extends Validator
         'title'   => 'required',
         'body'    => 'required',
         'user_id' => 'required',
-        'categories' => 'required',
+        'category_id' => 'required',
         'slug' => 'required'
     ];
 }

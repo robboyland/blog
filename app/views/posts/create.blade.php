@@ -26,8 +26,8 @@
 
             <div class="form-group">
                 {{ Form::label('categories', 'categories') }}
-                {{ Form::select('category_id', $categories, ['class' => 'form-control']) }}
-                {{ $errors->first('categories') }}
+                {{ Form::select('category_id', array('default' => 'Please select one option') + $categories, 'default', ['class' => 'form-control']) }}
+                {{ $errors->first('category_id') }}
             </div>
 
             <div class="form-group">

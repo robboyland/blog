@@ -19,6 +19,12 @@
             </div>
 
             <div class="form-group">
+                {{ Form::label('slug', 'slug') }}
+                {{ Form::text('slug', $post->slug, ['class' => 'form-control']) }}
+                {{ $errors->first('slug') }}
+            </div>
+
+            <div class="form-group">
                 {{ Form::label('categories', 'categories') }}
                 {{ Form::select('category_id', $categories , $post->category_id) }}
                 {{ $errors->first('categories_id') }}

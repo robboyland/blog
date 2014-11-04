@@ -1,12 +1,14 @@
 <?php
 
 use Blog\Services\PostCreator;
+use Blog\Services\PostEditor;
 
 class PostsController extends \BaseController {
 
-    public function __construct(PostCreator $postCreator)
+    public function __construct(PostCreator $postCreator, PostEditor $postEditor)
     {
         $this->postCreator = $postCreator;
+        $this->postEditor  = $postEditor;
 
         $this->beforeFilter('auth', ['except' => ['show', 'byTag', 'byCategory']]);
     }
@@ -101,21 +103,12 @@ class PostsController extends \BaseController {
      */
     public function update($id)
     {
-        $post = Post::findOrFail($id);
+        $result = $this->postEditor->update(Input::all(), $id);
 
-        $validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required']);
-
-        if ($validator->fails())
+        if ($result !== true)
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Redirect::back()->withInput()->withErrors($result);
         }
-
-        $post = Post::find($id);
-        $post->title        = Input::get('title');
-        $post->body         = Input::get('body');
-        $post->category_id  = Input::get('category_id');
-        $post->save();
-        $post->tags()->sync(Input::get('tags'));
 
         return Redirect::route('posts.index')->with('flash_message', 'Post Updated');
     }

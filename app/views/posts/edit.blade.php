@@ -26,7 +26,6 @@
 
             <div class="form-group">
                 {{ Form::label('categories', 'categories') }}
-                <!-- {{ Form::select('category_id', $categories , $post->category_id) }} -->
                 {{ Form::select('category_id', $categories, $post->category_id, ['class' => 'form-control']) }}
                 {{ $errors->first('categories_id') }}
             </div>

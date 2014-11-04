@@ -1,9 +1,13 @@
 <?php
 
+use Blog\Services\PostCreator;
+
 class PostsController extends \BaseController {
 
-    public function __construct()
+    public function __construct(PostCreator $postCreator)
     {
+        $this->postCreator = $postCreator;
+
         $this->beforeFilter('auth', ['except' => ['show', 'byTag', 'byCategory']]);
     }
 
@@ -38,15 +42,12 @@ class PostsController extends \BaseController {
      */
     public function store()
     {
-        $validator = Validator::make($data = Input::all(), ['title' => 'required', 'body' => 'required', 'user_id' => 'required', 'category_id' => 'required', 'slug' => 'required']);
+        $result = $this->postCreator->make(Input::all());
 
-        if ($validator->fails())
+        if ($result !== true)
         {
-            return Redirect::back()->withErrors($validator)->withInput();
+            return Redirect::back()->withInput()->withErrors($result);
         }
-
-        $post = Post::create($data);
-        $post->tags()->sync(Input::get('tags'));
 
         return Redirect::route('posts.index')->with('flash_message', 'New Post Created');
     }

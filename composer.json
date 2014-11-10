@@ -5,7 +5,9 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "laravel/framework": "4.2.*"
+        "laravel/framework": "4.2.*",
+        "guzzle/guzzle": "3.9.2",
+        "guzzlehttp/oauth-subscriber": "0.1.2"
     },
     "require-dev": {
         "way/generators": "~2.0",

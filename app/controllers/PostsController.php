@@ -2,13 +2,15 @@
 
 use Blog\Services\PostCreator;
 use Blog\Services\PostEditor;
+use Illuminate\Events\Dispatcher;
 
 class PostsController extends \BaseController {
 
-    public function __construct(PostCreator $postCreator, PostEditor $postEditor)
+    public function __construct(PostCreator $postCreator, PostEditor $postEditor, Dispatcher $events)
     {
         $this->postCreator = $postCreator;
         $this->postEditor  = $postEditor;
+        $this->events = $events;
 
         $this->beforeFilter('auth', ['except' => ['show', 'byTag', 'byCategory']]);
     }
@@ -50,6 +52,8 @@ class PostsController extends \BaseController {
         {
             return Redirect::back()->withInput()->withErrors($result);
         }
+
+        $this->events->fire('PostWasPublished', Input::get('title'));
 
         return Redirect::route('posts.index')->with('flash_message', 'New Post Created');
     }

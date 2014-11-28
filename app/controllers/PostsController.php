@@ -110,7 +110,10 @@ class PostsController extends \BaseController {
      */
     public function update($id)
     {
-        $result = $this->postEditor->update(Input::all(), $id);
+        $data = Input::all();
+        $data['id'] = $id;
+
+        $result = $this->postEditor->update($data);
 
         if ($result !== true)
         {

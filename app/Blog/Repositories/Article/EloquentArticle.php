@@ -146,15 +146,14 @@ class EloquentArticle extends RepositoryAbstract implements ArticleInterface {
     public function update(array $data)
     {
         $article = $this->article->find($data['id']);
-        $article->user_id = $data['user_id'];
-        $article->status_id = $data['status_id'];
-        $article->title = $data['title'];
-        $article->slug = $this->slug($data['title']);
-        $article->excerpt = $data['excerpt'];
-        $article->content = $data['content'];
+
+        $article->title         = $data['title'];
+        $article->body          = $data['body'];
+        $article->category_id   = $data['category_id'];
+        $article->slug          = $data['slug'];
         $article->save();
 
-        $this->syncTags($article, $data['tags']);
+        $article->tags()->sync($data['tags']);
 
         return true;
     }

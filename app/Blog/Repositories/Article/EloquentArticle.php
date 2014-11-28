@@ -70,9 +70,12 @@ class EloquentArticle extends RepositoryAbstract implements ArticleInterface {
      */
     public function bySlug($slug)
     {
+        $slug = $this->slug($slug);
+
         return $this->article->with('user')
                              ->with('category')
                              ->with('tags')
+                             ->with('comments')
                              ->where('slug', $slug)
                              ->first();
     }

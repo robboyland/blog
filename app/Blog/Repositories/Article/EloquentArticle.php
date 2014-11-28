@@ -160,6 +160,17 @@ class EloquentArticle extends RepositoryAbstract implements ArticleInterface {
     }
 
     /**
+     * Delete an Article
+     *
+     * @param int Article id
+     * @return void
+     */
+    public function delete($id)
+    {
+        Post::destroy($id);
+    }
+
+    /**
      * Sync tags for article
      *
      * @param \Illuminate\Database\Eloquent\Model  $article

@@ -123,6 +123,7 @@ return array(
         'Illuminate\Workbench\WorkbenchServiceProvider',
         'Blog\Providers\SocialServiceProvider',
         'Blog\Providers\EventServiceProvider',
+        'Blog\Providers\RepositoryServiceProvider',
     ),
 
     /*

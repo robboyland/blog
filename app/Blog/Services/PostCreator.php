@@ -1,32 +1,25 @@
 <?php namespace Blog\Services;
 
-use Post;
-use Tag;
+use Blog\Repositories\Article\ArticleInterface;
 use Blog\Validators\PostValidator;
 
 class PostCreator
 {
+    protected $validator;
 
-    public function __construct(PostValidator $validator)
+    protected $article;
+
+    public function __construct(PostValidator $validator, ArticleInterface $article)
     {
         $this->validator = $validator;
+        $this->article = $article;
     }
 
     public function make($attributes)
     {
         if ($this->validator->isValid($attributes))
         {
-            $post = Post::create([
-                            'title'       => $attributes['title'],
-                            'body'        => $attributes['body'],
-                            'user_id'     => $attributes ['user_id'],
-                            'category_id' => $attributes['category_id'],
-                            'slug'        => $attributes['slug']
-                         ]);
-
-            $post->tags()->sync($attributes['tags']);
-
-            return true;
+            return $this->article->create($attributes);
         }
 
         return $this->validator->getErrors();

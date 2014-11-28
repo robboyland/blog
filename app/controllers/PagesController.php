@@ -1,26 +1,23 @@
 <?php
 
+use Blog\Repositories\Article\ArticleInterface;
+
 class PagesController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
+    public function __construct(ArticleInterface $article)
+    {
+        $this->article = $article;
+    }
 
-	public function home()
-	{
-        $posts = Post::with('user')->get();
+    public function home()
+    {
+        $page = Input::get('page', 1);
+        $pagiData = $this->article->byPage($page, $perPage = 9);
+        $posts = Paginator::make($pagiData->items, $pagiData->totalItems, $perPage);
+
         $categories = Category::all();
         $tags = Tag::all();
-		return View::make('pages.home', compact('posts', 'categories', 'tags'));
-	}
 
+        return View::make('pages.home', compact('posts', 'categories', 'tags'));
+    }
 }

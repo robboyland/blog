@@ -1,33 +1,21 @@
 <?php namespace Blog\Services;
 
-use Post;
-use Tag;
+use Blog\Repositories\Article\ArticleInterface;
 use Blog\Validators\PostValidator;
 
 class PostEditor
 {
-
-    public function __construct(PostValidator $validator)
+    public function __construct(PostValidator $validator, ArticleInterface $article)
     {
         $this->validator = $validator;
+        $this->article = $article;
     }
 
-    public function update($attributes, $id)
+    public function update($attributes)
     {
-
         if ($this->validator->isValid($attributes))
         {
-            $post = Post::find($id);
-
-            $post->title        = $attributes['title'];
-            $post->body         = $attributes['body'];
-            $post->category_id  = $attributes['category_id'];
-            $post->slug         = $attributes['slug'];
-            $post->save();
-
-            $post->tags()->sync($attributes['tags']);
-
-            return true;
+            return $this->article->update($attributes);
         }
 
         return $this->validator->getErrors();

@@ -2,14 +2,19 @@
 
 use Blog\Services\PostCreator;
 use Blog\Services\PostEditor;
+use Blog\Repositories\Article\ArticleInterface;
 use Illuminate\Events\Dispatcher;
 
 class PostsController extends \BaseController {
 
-    public function __construct(PostCreator $postCreator, PostEditor $postEditor, Dispatcher $events)
+    public function __construct(PostCreator $postCreator,
+                                PostEditor $postEditor,
+                                ArticleInterface $article,
+                                Dispatcher $events)
     {
         $this->postCreator = $postCreator;
         $this->postEditor  = $postEditor;
+        $this->article = $article;
         $this->events = $events;
 
         $this->beforeFilter('auth', ['except' => ['show', 'byTag', 'byCategory']]);
@@ -66,11 +71,9 @@ class PostsController extends \BaseController {
      */
     public function show($slug)
     {
-        $post = Post::where('slug', '=', $slug)->firstOrFail();;
+        $post = $this->article->bySlug($slug);
 
-        $comments = Comment::with('user')->where('post_id', '=', $post->id)->get();
-
-        return View::make('posts.show', compact('post', 'comments'));
+        return View::make('posts.show', compact('post'));
     }
 
     /**

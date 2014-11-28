@@ -128,7 +128,7 @@ class PostsController extends \BaseController {
      */
     public function destroy($id)
     {
-        Post::destroy($id);
+        $this->article->delete($id);
 
         return Redirect::route('posts.index')->with('flash_message', 'Post Deleted');
     }

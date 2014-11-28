@@ -1,5 +1,7 @@
 <?php namespace Blog\Repositories\Article;
 
+use Post;
+use Tag;
 use Blog\Repositories\RepositoryAbstract;
 use Blog\Repositories\Tag\TagInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -122,21 +124,15 @@ class EloquentArticle extends RepositoryAbstract implements ArticleInterface {
      */
     public function create(array $data)
     {
-        // Create the article
-        $article = $this->article->create(array(
-            'user_id' => $data['user_id'],
-            'title' => $data['title'],
-            'slug' => $this->slug($data['title']),
-            'excerpt' => $data['excerpt'],
-            'content' => $data['content'],
-        ));
+        $post = Post::create([
+                    'title'       => $data['title'],
+                    'body'        => $data['body'],
+                    'user_id'     => $data['user_id'],
+                    'category_id' => $data['category_id'],
+                    'slug'        => $data['slug']
+                ]);
 
-        if( ! $article )
-        {
-            return false;
-        }
-
-        $this->syncTags($article, $data['tags']);
+        $post->tags()->sync($data['tags']);
 
         return true;
     }

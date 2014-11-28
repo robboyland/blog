@@ -25,9 +25,9 @@
                 {{ Form::close() }}
             @endif
 
-            @if (isset($comments))
-                <h2>Comments &nbsp;<span class="comment-count">{{ count($comments)}}</span></h2>
-                @foreach($comments as $comment)
+            @if ( ! empty($post->comments))
+                <h2>Comments &nbsp;<span class="comment-count">{{ count($post->comments)}}</span></h2>
+                @foreach($post->comments as $comment)
                     <section class="comments">
                         <div class="comment-details">{{ $comment->created_at->format('Y m d') }} &middot; {{ $comment->user->name }}</div>
                         <p>{{ $comment->body }}</p>

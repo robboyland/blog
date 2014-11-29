@@ -9,7 +9,7 @@ simple blog app to get familiar with the Laravel framework (version 4.2)
 - Injection of dependencies
 - Coding to abstractions (interfaces) for inversion of control
 - Use of Laravel IoC Container for instantiation of Abstractions with dependencies
-
+- caching: cache decorator class for repository
 
 ### Domain Driven Development
 

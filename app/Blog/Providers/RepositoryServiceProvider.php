@@ -19,13 +19,10 @@ class RepositoryServiceProvider extends ServiceProvider {
                 $app->make('Blog\Repositories\Tag\TagInterface')
             );
 
-            // Wrap the Article repo in the
-            // CacheDecorator and return it
             return new CacheDecorator(
-                        $article,
-                        // Our new Cache service class:
-                        new LaravelCache($app['cache'], 'articles', 10)
-                    );
+                $article,
+                new LaravelCache($app['cache'], 'articles', 10)
+            );
         });
 
         $this->app->bind('Blog\Repositories\Tag\TagInterface', function($app)

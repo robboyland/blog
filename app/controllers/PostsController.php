@@ -1,7 +1,7 @@
 <?php
 
-use Blog\Services\PostCreator;
-use Blog\Services\PostEditor;
+use Blog\Service\PostCreator;
+use Blog\Service\PostEditor;
 use Blog\Repositories\Article\ArticleInterface;
 use Illuminate\Events\Dispatcher;
 

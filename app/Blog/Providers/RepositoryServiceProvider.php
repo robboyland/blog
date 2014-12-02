@@ -2,10 +2,12 @@
 
 use Tag;
 use Post;
+use Category;
 use Blog\Service\Cache\LaravelCache;
 use Blog\Repository\Article\CacheDecorator;
 use Blog\Repository\Tag\EloquentTag;
 use Blog\Repository\Article\EloquentArticle;
+use Blog\Repository\Category\ELoquentCategory;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider {
@@ -28,6 +30,11 @@ class RepositoryServiceProvider extends ServiceProvider {
         $this->app->bind('Blog\Repository\Tag\TagInterface', function($app)
         {
             return new EloquentTag(new Tag);
+        });
+
+        $this->app->bind('Blog\Repository\Category\CategoryInterface', function($app)
+        {
+            return new EloquentCategory(new Category);
         });
     }
 

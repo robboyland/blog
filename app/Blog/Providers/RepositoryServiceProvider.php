@@ -7,7 +7,8 @@ use Blog\Service\Cache\LaravelCache;
 use Blog\Repository\Article\CacheDecorator;
 use Blog\Repository\Tag\EloquentTag;
 use Blog\Repository\Article\EloquentArticle;
-use Blog\Repository\Category\ELoquentCategory;
+use Blog\Repository\Category\EloquentCategory;
+use Blog\Repository\Category\CacheDecorator as CategoryCacheDecorator;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider {
@@ -34,7 +35,12 @@ class RepositoryServiceProvider extends ServiceProvider {
 
         $this->app->bind('Blog\Repository\Category\CategoryInterface', function($app)
         {
-            return new EloquentCategory(new Category);
+            $category = new EloquentCategory(new Category);
+
+            return new CategoryCacheDecorator(
+                $category,
+                new LaravelCache($app['cache'], 'categories', 10)
+            );
         });
     }
 

@@ -3,20 +3,20 @@
 use Tag;
 use Post;
 use Blog\Service\Cache\LaravelCache;
-use Blog\Repositories\Article\CacheDecorator;
-use Blog\Repositories\Tag\EloquentTag;
-use Blog\Repositories\Article\EloquentArticle;
+use Blog\Repository\Article\CacheDecorator;
+use Blog\Repository\Tag\EloquentTag;
+use Blog\Repository\Article\EloquentArticle;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider {
 
     public function register()
     {
-        $this->app->bind('Blog\Repositories\Article\ArticleInterface', function($app)
+        $this->app->bind('Blog\Repository\Article\ArticleInterface', function($app)
         {
             $article =  new EloquentArticle(
                 new Post,
-                $app->make('Blog\Repositories\Tag\TagInterface')
+                $app->make('Blog\Repository\Tag\TagInterface')
             );
 
             return new CacheDecorator(
@@ -25,7 +25,7 @@ class RepositoryServiceProvider extends ServiceProvider {
             );
         });
 
-        $this->app->bind('Blog\Repositories\Tag\TagInterface', function($app)
+        $this->app->bind('Blog\Repository\Tag\TagInterface', function($app)
         {
             return new EloquentTag(new Tag);
         });

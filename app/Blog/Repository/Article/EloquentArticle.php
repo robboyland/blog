@@ -1,9 +1,9 @@
-<?php namespace Blog\Repositories\Article;
+<?php namespace Blog\Repository\Article;
 
 use Post;
 use Tag;
-use Blog\Repositories\RepositoryAbstract;
-use Blog\Repositories\Tag\TagInterface;
+use Blog\Repository\RepositoryAbstract;
+use Blog\Repository\Tag\TagInterface;
 use Illuminate\Database\Eloquent\Model;
 
 class EloquentArticle extends RepositoryAbstract implements ArticleInterface {

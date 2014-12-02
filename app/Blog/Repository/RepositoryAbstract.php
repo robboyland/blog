@@ -1,4 +1,4 @@
-<?php namespace Blog\Repositories;
+<?php namespace Blog\Repository;
 
 abstract class RepositoryAbstract {
 

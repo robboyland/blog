@@ -1,6 +1,6 @@
 <?php
 
-use Blog\Repositories\Article\ArticleInterface;
+use Blog\Repository\Article\ArticleInterface;
 
 class PagesController extends BaseController {
 

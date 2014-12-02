@@ -1,4 +1,4 @@
-<?php namespace Blog\Repositories\Tag;
+<?php namespace Blog\Repository\Tag;
 
 interface TagInterface {
 

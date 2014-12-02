@@ -1,6 +1,6 @@
-<?php namespace Blog\Repositories\Tag;
+<?php namespace Blog\Repository\Tag;
 
-use Blog\Repositories\RepositoryAbstract;
+use Blog\Repository\RepositoryAbstract;
 use Illuminate\Database\Eloquent\Model;
 
 class EloquentTag extends RepositoryAbstract implements TagInterface {

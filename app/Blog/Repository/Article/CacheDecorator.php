@@ -1,4 +1,4 @@
-<?php namespace Blog\Repositories\Article;
+<?php namespace Blog\Repository\Article;
 
 use Blog\Service\Cache\CacheInterface;
 

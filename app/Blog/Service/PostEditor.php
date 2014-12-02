@@ -1,6 +1,6 @@
 <?php namespace Blog\Service;
 
-use Blog\Repositories\Article\ArticleInterface;
+use Blog\Repository\Article\ArticleInterface;
 use Blog\Validators\PostValidator;
 
 class PostEditor

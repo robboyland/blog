@@ -2,7 +2,7 @@
 
 use Blog\Service\PostCreator;
 use Blog\Service\PostEditor;
-use Blog\Repositories\Article\ArticleInterface;
+use Blog\Repository\Article\ArticleInterface;
 use Illuminate\Events\Dispatcher;
 
 class PostsController extends \BaseController {

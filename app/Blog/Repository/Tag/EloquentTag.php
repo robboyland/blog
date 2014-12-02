@@ -53,4 +53,8 @@ class EloquentTag extends RepositoryAbstract implements TagInterface {
         return $returnTags;
     }
 
+    public function all()
+    {
+        return $this->tag->orderby('name', 'asc')->get();
+    }
 }

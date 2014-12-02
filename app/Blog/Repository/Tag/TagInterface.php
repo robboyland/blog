@@ -10,4 +10,5 @@ interface TagInterface {
      */
     public function findOrCreate(array $tags);
 
+    public function all();
 }

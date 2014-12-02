@@ -9,6 +9,7 @@ use Blog\Repository\Tag\EloquentTag;
 use Blog\Repository\Article\EloquentArticle;
 use Blog\Repository\Category\EloquentCategory;
 use Blog\Repository\Category\CacheDecorator as CategoryCacheDecorator;
+use Blog\Repository\Tag\CacheDecorator as TagCacheDecorator;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider {
@@ -30,7 +31,12 @@ class RepositoryServiceProvider extends ServiceProvider {
 
         $this->app->bind('Blog\Repository\Tag\TagInterface', function($app)
         {
-            return new EloquentTag(new Tag);
+            $tag = new EloquentTag(new Tag);
+
+            return new TagCacheDecorator(
+                $tag,
+                new LaravelCache($app['cache'], 'articles', 10)
+            );
         });
 
         $this->app->bind('Blog\Repository\Category\CategoryInterface', function($app)

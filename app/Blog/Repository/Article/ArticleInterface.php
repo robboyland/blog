@@ -54,4 +54,11 @@ interface ArticleInterface {
      */
     public function update(array $data);
 
+    /**
+     * Delete an existing Article
+     *
+     * @param int id of Article to be deleted
+     * @return boolean
+     */
+    public function delete($id);
 }

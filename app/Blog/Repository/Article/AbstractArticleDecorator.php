@@ -57,4 +57,8 @@ abstract class AbstractArticleDecorator implements ArticleInterface {
         return $this->nextArticle->update($data);
     }
 
+    public function delete($id)
+    {
+        $this->nextArticle->delete($id);
+    }
 }

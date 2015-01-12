@@ -26,6 +26,7 @@
             <li><a href="#">dashboard</a></li>
             <li>{{ link_to_action('PostsController@index', 'posts') }}</li>
             <li><a href="#">comments</a></li>
+            <li>{{ link_to_route('users.edit', 'edit', [Auth::user()->id]) }}</li>
             <li class="divider"></li>
             <li>{{ link_to_action('SessionsController@destroy', 'log out') }}</li>
 

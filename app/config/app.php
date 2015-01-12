@@ -125,6 +125,7 @@ return array(
         'Blog\Providers\EventServiceProvider',
         'Blog\Providers\RepositoryServiceProvider',
         'Blog\Newsletters\NewsletterListServiceProvider',
+        'Blog\Notifications\NotificationsServiceProvider'
     ),
 
     /*

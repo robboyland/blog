@@ -1,6 +1,19 @@
 <?php
 
+use Blog\Newsletters\NewsletterList;
+
 class UsersController extends \BaseController {
+
+    /**
+     * @var Blog\Newsletter\NewsletterList
+     */
+    private $newsletterList;
+
+
+    public function __construct(NewsletterList $newsletterList)
+    {
+        $this->newsletterList = $newsletterList;
+    }
 
 	/**
 	 * Display a listing of the resource.
@@ -70,7 +83,9 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = Auth::user();
+
+        return View::make('users.edit', compact('user'));
 	}
 
 	/**
@@ -82,7 +97,15 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        Auth::user()->updateCredentials(Input::all());
+
+        $email = Auth::user()->email;
+
+        $method = Input::get('notify') ? 'subscribeTo' : 'unsubscribeFrom';
+
+		$this->newsletterList->{$method}('ArticlePublishedSubscribers', $email);
+
+        return 'Done';
 	}
 
 	/**

@@ -2,7 +2,6 @@
 
 class SessionsController extends \BaseController {
 
-
 	/**
 	 * Show the form for creating a new resource.
 	 * GET /sessions/create
@@ -48,10 +47,6 @@ class SessionsController extends \BaseController {
 	{
 		//
 	}
-
-
-
-
 
 	/**
 	 * Remove the specified resource from storage.

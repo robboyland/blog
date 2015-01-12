@@ -105,7 +105,7 @@ class UsersController extends \BaseController {
 
 		$this->newsletterList->{$method}('ArticlePublishedSubscribers', $email);
 
-        return 'Done';
+        return Redirect::route('posts.index')->with('flash_message', 'Details Updated');
 	}
 
 	/**

@@ -124,6 +124,7 @@ return array(
         'Blog\Providers\SocialServiceProvider',
         'Blog\Providers\EventServiceProvider',
         'Blog\Providers\RepositoryServiceProvider',
+        'Blog\Newsletters\NewsletterListServiceProvider',
     ),
 
     /*

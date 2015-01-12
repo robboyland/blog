@@ -16,7 +16,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     protected $table = 'users';
 
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'password', 'notify'];
 
     public function posts()
     {
@@ -39,4 +39,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
     protected $hidden = array('password', 'remember_token');
 
+    public function updateCredentials($input)
+    {
+        $this->notify = isset($input['notify']) ? 1 : 0;
+        $this->save();
+    }
 }
